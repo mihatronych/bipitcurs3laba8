@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище epiclibraryModelContainer" CdmEntityContainer="epiclibraryEntities">
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="epiclibraryModel.Books">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="b_id" ColumnName="b_id" />
+          <ScalarProperty Name="b_name" ColumnName="b_name" />
+          <ScalarProperty Name="b_author" ColumnName="b_author" />
+          <ScalarProperty Name="b_publ" ColumnName="b_publ" />
+          <ScalarProperty Name="b_born" ColumnName="b_born" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Outputs">
+      <EntityTypeMapping TypeName="epiclibraryModel.Outputs">
+        <MappingFragment StoreEntitySet="Outputs">
+          <ScalarProperty Name="o_id" ColumnName="o_id" />
+          <ScalarProperty Name="R_id" ColumnName="R_id" />
+          <ScalarProperty Name="B_id" ColumnName="B_id" />
+          <ScalarProperty Name="o_dt_out" ColumnName="o_dt_out" />
+          <ScalarProperty Name="o_dt_in" ColumnName="o_dt_in" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Readers">
+      <EntityTypeMapping TypeName="epiclibraryModel.Readers">
+        <MappingFragment StoreEntitySet="Readers">
+          <ScalarProperty Name="r_id" ColumnName="r_id" />
+          <ScalarProperty Name="r_fio" ColumnName="r_fio" />
+          <ScalarProperty Name="r_dt_birth" ColumnName="r_dt_birth" />
+          <ScalarProperty Name="r_passport" ColumnName="r_passport" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

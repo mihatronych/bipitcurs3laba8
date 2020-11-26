@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataToOrFrom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataToOrFromResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataToOrFromResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataToAndFrom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataToAndFromResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataToAndFromResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataReaders">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDataReadersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataReadersResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataBooks">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDataBooksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataBooksResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewRec">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="r_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="b_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="o_dt_out" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="o_dt_in" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewRecResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewRecResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRec">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteRecResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllData" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDataToOrFromSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataToOrFrom" />
+  </wsdl:message>
+  <wsdl:message name="GetDataToOrFromSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataToOrFromResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDataToAndFromSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataToAndFrom" />
+  </wsdl:message>
+  <wsdl:message name="GetDataToAndFromSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataToAndFromResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDataReadersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataReaders" />
+  </wsdl:message>
+  <wsdl:message name="GetDataReadersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataReadersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDataBooksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataBooks" />
+  </wsdl:message>
+  <wsdl:message name="GetDataBooksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewRecSoapIn">
+    <wsdl:part name="parameters" element="tns:NewRec" />
+  </wsdl:message>
+  <wsdl:message name="NewRecSoapOut">
+    <wsdl:part name="parameters" element="tns:NewRecResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRec" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRecResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceForLibrarySoap">
+    <wsdl:operation name="GetAllData">
+      <wsdl:input message="tns:GetAllDataSoapIn" />
+      <wsdl:output message="tns:GetAllDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataToOrFrom">
+      <wsdl:input message="tns:GetDataToOrFromSoapIn" />
+      <wsdl:output message="tns:GetDataToOrFromSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataToAndFrom">
+      <wsdl:input message="tns:GetDataToAndFromSoapIn" />
+      <wsdl:output message="tns:GetDataToAndFromSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataReaders">
+      <wsdl:input message="tns:GetDataReadersSoapIn" />
+      <wsdl:output message="tns:GetDataReadersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataBooks">
+      <wsdl:input message="tns:GetDataBooksSoapIn" />
+      <wsdl:output message="tns:GetDataBooksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewRec">
+      <wsdl:input message="tns:NewRecSoapIn" />
+      <wsdl:output message="tns:NewRecSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRec">
+      <wsdl:input message="tns:DeleteRecSoapIn" />
+      <wsdl:output message="tns:DeleteRecSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceForLibrarySoap" type="tns:ServiceForLibrarySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllData">
+      <soap:operation soapAction="http://tempuri.org/GetAllData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataToOrFrom">
+      <soap:operation soapAction="http://tempuri.org/GetDataToOrFrom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataToAndFrom">
+      <soap:operation soapAction="http://tempuri.org/GetDataToAndFrom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataReaders">
+      <soap:operation soapAction="http://tempuri.org/GetDataReaders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataBooks">
+      <soap:operation soapAction="http://tempuri.org/GetDataBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewRec">
+      <soap:operation soapAction="http://tempuri.org/NewRec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRec">
+      <soap:operation soapAction="http://tempuri.org/DeleteRec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceForLibrarySoap12" type="tns:ServiceForLibrarySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllData">
+      <soap12:operation soapAction="http://tempuri.org/GetAllData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataToOrFrom">
+      <soap12:operation soapAction="http://tempuri.org/GetDataToOrFrom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataToAndFrom">
+      <soap12:operation soapAction="http://tempuri.org/GetDataToAndFrom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataReaders">
+      <soap12:operation soapAction="http://tempuri.org/GetDataReaders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataBooks">
+      <soap12:operation soapAction="http://tempuri.org/GetDataBooks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewRec">
+      <soap12:operation soapAction="http://tempuri.org/NewRec" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRec">
+      <soap12:operation soapAction="http://tempuri.org/DeleteRec" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceForLibrary">
+    <wsdl:port name="ServiceForLibrarySoap" binding="tns:ServiceForLibrarySoap">
+      <soap:address location="http://mihail12336.somee.com/curs3laba3/ServiceForLibrary.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceForLibrarySoap12" binding="tns:ServiceForLibrarySoap12">
+      <soap12:address location="http://mihail12336.somee.com/curs3laba3/ServiceForLibrary.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

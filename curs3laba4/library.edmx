@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище epiclibraryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="b_id" />
+          </Key>
+          <Property Name="b_id" Type="int" Nullable="false" />
+          <Property Name="b_name" Type="nvarchar(max)" />
+          <Property Name="b_author" Type="nvarchar(max)" />
+          <Property Name="b_publ" Type="date" />
+          <Property Name="b_born" Type="date" />
+        </EntityType>
+        <EntityType Name="Outputs">
+          <Key>
+            <PropertyRef Name="o_id" />
+          </Key>
+          <Property Name="o_id" Type="int" Nullable="false" />
+          <Property Name="R_id" Type="int" Nullable="false" />
+          <Property Name="B_id" Type="int" Nullable="false" />
+          <Property Name="o_dt_out" Type="date" />
+          <Property Name="o_dt_in" Type="date" />
+        </EntityType>
+        <EntityType Name="Readers">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="int" Nullable="false" />
+          <Property Name="r_fio" Type="nvarchar(max)" />
+          <Property Name="r_dt_birth" Type="date" />
+          <Property Name="r_passport" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Outputs_Outputs">
+          <End Role="Outputs" Type="Self.Outputs" Multiplicity="1" />
+          <End Role="Outputs1" Type="Self.Outputs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Outputs">
+              <PropertyRef Name="o_id" />
+            </Principal>
+            <Dependent Role="Outputs1">
+              <PropertyRef Name="o_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище epiclibraryModelContainer">
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Outputs" EntityType="Self.Outputs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Readers" EntityType="Self.Readers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Outputs_Outputs" Association="Self.FK_Outputs_Outputs">
+            <End Role="Outputs" EntitySet="Outputs" />
+            <End Role="Outputs1" EntitySet="Outputs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="epiclibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="b_id" />
+          </Key>
+          <Property Name="b_id" Type="Int32" Nullable="false" />
+          <Property Name="b_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="b_author" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="b_publ" Type="DateTime" Precision="0" />
+          <Property Name="b_born" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Outputs">
+          <Key>
+            <PropertyRef Name="o_id" />
+          </Key>
+          <Property Name="o_id" Type="Int32" Nullable="false" />
+          <Property Name="R_id" Type="Int32" Nullable="false" />
+          <Property Name="B_id" Type="Int32" Nullable="false" />
+          <Property Name="o_dt_out" Type="DateTime" Precision="0" />
+          <Property Name="o_dt_in" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Outputs1" Relationship="Self.FK_Outputs_Outputs" FromRole="Outputs" ToRole="Outputs1" />
+          <NavigationProperty Name="Outputs2" Relationship="Self.FK_Outputs_Outputs" FromRole="Outputs1" ToRole="Outputs" />
+        </EntityType>
+        <EntityType Name="Readers">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="Int32" Nullable="false" />
+          <Property Name="r_fio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="r_dt_birth" Type="DateTime" Precision="0" />
+          <Property Name="r_passport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Outputs_Outputs">
+          <End Role="Outputs" Type="Self.Outputs" Multiplicity="1" />
+          <End Role="Outputs1" Type="Self.Outputs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Outputs">
+              <PropertyRef Name="o_id" />
+            </Principal>
+            <Dependent Role="Outputs1">
+              <PropertyRef Name="o_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="epiclibraryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="Self.Books" />
+          <EntitySet Name="Outputs" EntityType="Self.Outputs" />
+          <EntitySet Name="Readers" EntityType="Self.Readers" />
+          <AssociationSet Name="FK_Outputs_Outputs" Association="Self.FK_Outputs_Outputs">
+            <End Role="Outputs" EntitySet="Outputs" />
+            <End Role="Outputs1" EntitySet="Outputs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище epiclibraryModelContainer" CdmEntityContainer="epiclibraryEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="epiclibraryModel.Books">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="b_id" ColumnName="b_id" />
+                <ScalarProperty Name="b_name" ColumnName="b_name" />
+                <ScalarProperty Name="b_author" ColumnName="b_author" />
+                <ScalarProperty Name="b_publ" ColumnName="b_publ" />
+                <ScalarProperty Name="b_born" ColumnName="b_born" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Outputs">
+            <EntityTypeMapping TypeName="epiclibraryModel.Outputs">
+              <MappingFragment StoreEntitySet="Outputs">
+                <ScalarProperty Name="o_id" ColumnName="o_id" />
+                <ScalarProperty Name="R_id" ColumnName="R_id" />
+                <ScalarProperty Name="B_id" ColumnName="B_id" />
+                <ScalarProperty Name="o_dt_out" ColumnName="o_dt_out" />
+                <ScalarProperty Name="o_dt_in" ColumnName="o_dt_in" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Readers">
+            <EntityTypeMapping TypeName="epiclibraryModel.Readers">
+              <MappingFragment StoreEntitySet="Readers">
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+                <ScalarProperty Name="r_fio" ColumnName="r_fio" />
+                <ScalarProperty Name="r_dt_birth" ColumnName="r_dt_birth" />
+                <ScalarProperty Name="r_passport" ColumnName="r_passport" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
